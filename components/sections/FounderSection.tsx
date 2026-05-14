@@ -94,7 +94,7 @@ export default function FounderSection() {
               variants={fadeUp}
               className="mt-4 text-base md:text-lg text-foreground/80 leading-relaxed"
             >
-              이 작업이 더 많은 학습자, 특히 한글이라는 문이 너무 무겁게 느껴졌던 외국인 학습자에게 가볍게 열려, 그들의 첫 한글 경험이 짓누름이 아니라 발견이 되기를 바랍니다.
+              이 작업이 더 많은 학습자, 특히 한글이라는 문이 너무 무겁게 느껴졌던 이들에게 — 처음 글자를 만나는 아이든, 다른 언어를 모어로 가진 어른이든 — 가볍게 열려, 그들의 첫 한글 경험이 짓누름이 아니라 발견이 되기를 바랍니다.
             </motion.p>
 
             <motion.div
