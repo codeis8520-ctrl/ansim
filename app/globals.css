@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #FAF8F5;
+  --color-background-muted: #F2F0EC;
+  --color-foreground: #1A1A1A;
+  --color-yang: #E85D3C;
+  --color-eum: #2C3E62;
+  --color-muted: #6B6B6B;
+  --color-accent: #F4C95D;
+  --font-pretendard: "Pretendard Variable", Pretendard, -apple-system, system-ui, sans-serif;
+}
+
+/* 한글 줄바꿈 정책 — 단어 중간 절단 방지 + 본문 고아 단어 방지.
+   대부분의 textcontainer에 자동 적용되어 모바일에서 자연스러운 줄바꿈을 만든다. */
+html {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}
