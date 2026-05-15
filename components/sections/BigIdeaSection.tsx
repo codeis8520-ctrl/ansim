@@ -24,6 +24,14 @@ export default function BigIdeaSection() {
           transition={{ staggerChildren: 0.18 }}
           className="flex flex-col items-center text-center"
         >
+          <motion.p
+            variants={fadeUp}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="text-base md:text-lg leading-relaxed text-foreground/70 max-w-2xl mx-auto mb-8 md:mb-10"
+          >
+            한글교육을 더이상 주입식·암기식으로 힘들고 어렵게 익힐 필요가 없습니다. 누구나 알고 있는 사람의 형상으로 한글을 연상해서 기억하면, 더욱 쉽고 간단하게 한글을 익힐 수 있습니다.
+          </motion.p>
+
           <motion.h2
             variants={fadeUp}
             transition={{ duration: 0.7, ease: "easeOut" }}

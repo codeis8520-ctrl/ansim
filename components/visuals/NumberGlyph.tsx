@@ -32,18 +32,9 @@ export interface NumberGlyphProps {
   className?: string;
 }
 
-// 좌표는 BRIEF에서 잠긴 값. 변경 X.
-// W: (40,220) → (90,80) → (120,200) → (150,80) → (200,220)
-// M: 수평축 기준 W를 뒤집기 — (40,80) → (90,220) → (120,100) → (150,220) → (200,80)
+// W (yang, 1~5): 하늘에서 출발해 땅으로 내려갔다 올라옴 → 위에서 시작·위에서 끝.
+// M (eum, 6~0): 땅에서 출발해 하늘로 올라갔다 내려옴 → 아래에서 시작·아래에서 끝.
 const W_VERTICES = [
-  [40, 220],
-  [90, 80],
-  [120, 200],
-  [150, 80],
-  [200, 220],
-] as const;
-
-const M_VERTICES = [
   [40, 80],
   [90, 220],
   [120, 100],
@@ -51,20 +42,28 @@ const M_VERTICES = [
   [200, 80],
 ] as const;
 
+const M_VERTICES = [
+  [40, 220],
+  [90, 80],
+  [120, 200],
+  [150, 80],
+  [200, 220],
+] as const;
+
 // 숫자 라벨 위치 — 각 stroke 시작 vertex 근처, 본체 stroke와 겹치지 않게
-// 가독성 우선으로 약간 오프셋 (W는 위로 가는 시작점은 아래쪽에, 아래로 가는 시작점은 위쪽에).
+// 가독성 우선으로 약간 오프셋 (아래로 가는 시작점은 위쪽에, 위로 가는 시작점은 아래쪽에).
 const W_NUMBER_POSITIONS = [
-  { x: 28, y: 240, text: "1" }, // (40,220) start, segment 위로 → 아래에 배치
-  { x: 78, y: 68, text: "2" }, // (90,80) start, segment 아래로 → 위에 배치
-  { x: 120, y: 224, text: "3" }, // (120,200) start, segment 위로 → 아래
-  { x: 138, y: 68, text: "4" }, // (150,80) start, segment 아래로 → 위
+  { x: 28, y: 68, text: "1" }, // (40,80) start, segment 아래로 → 위에 배치
+  { x: 78, y: 240, text: "2" }, // (90,220) start, segment 위로 → 아래
+  { x: 120, y: 92, text: "3" }, // (120,100) start, segment 아래로 → 위
+  { x: 138, y: 240, text: "4" }, // (150,220) start, segment 위로 → 아래
 ] as const;
 
 const M_NUMBER_POSITIONS = [
-  { x: 28, y: 68, text: "6" }, // (40,80) start, segment 아래로 → 위에 배치
-  { x: 78, y: 240, text: "7" }, // (90,220) start, segment 위로 → 아래
-  { x: 120, y: 92, text: "8" }, // (120,100) start, segment 아래로 → 위
-  { x: 138, y: 240, text: "9" }, // (150,220) start, segment 위로 → 아래
+  { x: 28, y: 240, text: "6" }, // (40,220) start, segment 위로 → 아래
+  { x: 78, y: 68, text: "7" }, // (90,80) start, segment 아래로 → 위
+  { x: 120, y: 224, text: "8" }, // (120,200) start, segment 위로 → 아래
+  { x: 138, y: 68, text: "9" }, // (150,80) start, segment 아래로 → 위
 ] as const;
 
 export default function NumberGlyph({ variant, className }: NumberGlyphProps) {

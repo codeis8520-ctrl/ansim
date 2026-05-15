@@ -82,7 +82,7 @@ export default function NumbersSection() {
             variants={fadeUp}
             className="text-base md:text-lg text-foreground/80 text-center max-w-3xl mx-auto leading-relaxed mt-12 md:mt-16"
           >
-            W는 위로 4번 올라가며 1·2·3·4를 한 글자에 담습니다. △은 양의 완성 — 5. M은 아래로 4번 내려오며 6·7·8·9를 담습니다. ○은 음의 완성 — 0. 획 수가 그대로 숫자의 값입니다.
+            W는 하늘에서 출발해 땅으로 내려왔다 다시 올라가며 1·2·3·4를 한 글자에 담습니다. △은 양의 완성 — 5. M은 땅에서 출발해 하늘로 올라갔다 다시 내려오며 6·7·8·9를 담습니다. ○은 음의 완성 — 0. 획 수가 그대로 숫자의 값입니다.
           </motion.p>
         </motion.div>
       </Container>
