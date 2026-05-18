@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
+import ConsonantSongSheet from "@/components/visuals/ConsonantSongSheet";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -20,43 +21,10 @@ const parentVariants = {
 };
 
 /**
- * 안심 한글 노래 (자음 14자) — 아리랑 가락에 14자 자음을 얹어
- * 자음 트리 마무리 후 음악적 코다로 한 화면에서 마감.
- *
- * Polarity: 가카라 라인은 ㄱ(양) 행, 나다타는 ㄴ(음) 행, 마바파는 ㅁ(음),
- *   사자차는 ㅅ(양), 아하는 ㅇ(음). 각 자음의 양/음 색을 가사에 반영.
+ * 안심 한글 노래 (자음 14자) — 작사·작곡 김윤규.
+ * 아리랑 가락 위에 14자 자음을 얹어 자음 트리 마무리 후 음악적 코다로 마감.
+ * 손글씨 악보를 그대로 깔끔하게 SVG로 새로 그려 보여준다.
  */
-type Polarity = "yang" | "eum" | "neutral";
-
-interface Verse {
-  label: string;
-  lines: { text: string; tone?: Polarity }[];
-}
-
-const VERSES: Verse[] = [
-  {
-    label: "1절 (도입)",
-    lines: [
-      { text: "아리랑 아리랑 아라리요", tone: "neutral" },
-      { text: "아리랑 고개를 넘어간다", tone: "neutral" },
-    ],
-  },
-  {
-    label: "2절 (14자 자음)",
-    lines: [
-      { text: "가 카 라  나 다 타", tone: "yang" },
-      { text: "마 바 파 모", tone: "eum" },
-      { text: "사 자 차  아 하 로 넘어간다", tone: "yang" },
-    ],
-  },
-];
-
-function toneClass(tone: Polarity | undefined): string {
-  if (tone === "yang") return "text-yang";
-  if (tone === "eum") return "text-eum";
-  return "text-foreground";
-}
-
 export default function ConsonantSongSection() {
   return (
     <section
@@ -88,7 +56,7 @@ export default function ConsonantSongSection() {
 
           <motion.div
             variants={fadeUp}
-            className="mt-12 md:mt-16 mx-auto max-w-2xl p-6 md:p-10 rounded-2xl bg-background border border-foreground/10"
+            className="mt-12 md:mt-16 mx-auto max-w-4xl p-6 md:p-10 rounded-2xl bg-background border border-foreground/10 shadow-sm"
           >
             <div className="flex flex-col items-center text-center gap-1 mb-6 md:mb-8">
               <p className="text-xl md:text-2xl font-bold">
@@ -96,29 +64,15 @@ export default function ConsonantSongSection() {
                 <span className="text-foreground/60 font-medium">(자음 14자)</span>
               </p>
               <p className="text-sm md:text-base text-foreground/60">
-                작사 · 작곡 김공자 · 가락: 아리랑
+                작사 · 작곡 김윤규 &nbsp;·&nbsp; 가락: 아리랑
               </p>
             </div>
 
-            <ol className="space-y-6 md:space-y-8">
-              {VERSES.map((verse) => (
-                <li key={verse.label}>
-                  <p className="text-xs md:text-sm text-foreground/50 uppercase tracking-wider mb-2">
-                    {verse.label}
-                  </p>
-                  <div className="space-y-1.5">
-                    {verse.lines.map((line, i) => (
-                      <p
-                        key={i}
-                        className={`text-lg md:text-2xl font-semibold leading-relaxed ${toneClass(line.tone)}`}
-                      >
-                        {line.text}
-                      </p>
-                    ))}
-                  </div>
-                </li>
-              ))}
-            </ol>
+            <div className="overflow-x-auto">
+              <div className="min-w-[640px] md:min-w-0">
+                <ConsonantSongSheet />
+              </div>
+            </div>
           </motion.div>
 
           <motion.p
