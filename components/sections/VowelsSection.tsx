@@ -130,22 +130,22 @@ export default function VowelsSection() {
             </div>
 
             {/* 우측 — 모음 변환 표 */}
-            <ul className="space-y-6">
+            <ul className="space-y-4 md:space-y-6">
               {ROWS.map((row, idx) => (
                 <li
                   key={idx}
-                  className="group rounded-lg p-3 hover:bg-foreground/[0.03] transition-colors"
+                  className="group rounded-lg p-2 sm:p-3 hover:bg-foreground/[0.03] transition-colors"
                 >
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+                  <div className="flex flex-nowrap items-center gap-x-1.5 sm:gap-x-3 md:gap-x-4">
                     {/* 베이스 자세 */}
                     <div
-                      className={`w-12 h-12 shrink-0 ${polarityClass(row.basePolarity)}`}
+                      className={`w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 shrink-0 ${polarityClass(row.basePolarity)}`}
                     >
                       <PostureIcon variant={row.baseVariant} />
                     </div>
 
                     {/* "→ 한 팔/두 팔" 라벨 */}
-                    <span className="text-base md:text-lg text-foreground/75 font-medium">
+                    <span className="text-[11px] sm:text-sm md:text-base lg:text-lg text-foreground/75 font-medium whitespace-nowrap shrink-0">
                       {row.prefixLabel}
                     </span>
 
@@ -153,10 +153,10 @@ export default function VowelsSection() {
                     {row.results.map((result) => (
                       <div
                         key={result.letter}
-                        className="flex items-center gap-2"
+                        className="flex items-center gap-1 sm:gap-2 shrink-0"
                       >
                         <div
-                          className={`w-12 h-12 shrink-0 text-foreground transition-transform group-hover:scale-110 ${polarityHoverClass(
+                          className={`w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 shrink-0 text-foreground transition-transform group-hover:scale-110 ${polarityHoverClass(
                             result.polarity
                           )}`}
                         >
@@ -166,7 +166,7 @@ export default function VowelsSection() {
                           aria-label={`모음 ${result.letter} — ${
                             result.polarity === "yang" ? "양" : "음"
                           }`}
-                          className={`text-3xl md:text-4xl font-bold text-foreground transition-colors ${polarityHoverClass(
+                          className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground transition-colors ${polarityHoverClass(
                             result.polarity
                           )}`}
                         >
