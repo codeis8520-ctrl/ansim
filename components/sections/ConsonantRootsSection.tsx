@@ -40,10 +40,12 @@ export default function ConsonantRootsSection() {
             <div className="flex flex-col items-center text-center gap-4">
               <PostureMorphGiyeok className="w-full max-w-[240px]" />
               <p className="text-xl md:text-2xl font-bold">
-                차렷 + 경례 = <span className="text-yang">ㄱ</span> (양자음)
+                <span className="text-yang">양모음 ㅣ</span>(차렷) +
+                경례 = <span className="text-yang">ㄱ</span> (양자음)
               </p>
               <p className="text-foreground/80 max-w-xs">
-                서서 거수 경례하는 팔의 모양. 한글 자음의 양의 뿌리.
+                선 몸이 양모음 ㅣ 줄기. 그 줄기에서 경례한 팔이
+                가지처럼 ㄱ을 이룬다.
               </p>
             </div>
 
@@ -51,10 +53,12 @@ export default function ConsonantRootsSection() {
             <div className="flex flex-col items-center text-center gap-4">
               <PostureMorphNieun className="w-full max-w-[240px]" />
               <p className="text-xl md:text-2xl font-bold">
-                누움 + 앉음 = <span className="text-eum">ㄴ</span> (음자음)
+                <span className="text-eum">음모음 ㅡ</span>(누움) +
+                앉음 = <span className="text-eum">ㄴ</span> (음자음)
               </p>
               <p className="text-foreground/80 max-w-xs">
-                누웠다가 앉는 다리의 모양. 한글 자음의 음의 뿌리.
+                누운 자리가 음모음 ㅡ 줄기. 그 줄기에서 일어난
+                상체가 가지처럼 ㄴ을 이룬다.
               </p>
             </div>
           </motion.div>

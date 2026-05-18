@@ -3,6 +3,10 @@
 import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import NumberGlyph from "@/components/visuals/NumberGlyph";
+import DigitGlyph, { type DigitValue } from "@/components/visuals/DigitGlyph";
+
+const YANG_DIGITS: DigitValue[] = [1, 2, 3, 4, 5];
+const EUM_DIGITS: DigitValue[] = [6, 7, 8, 9, 0];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -84,6 +88,61 @@ export default function NumbersSection() {
           >
             W는 하늘에서 출발해 땅으로 내려왔다 다시 올라가며 1·2·3·4를 한 글자에 담습니다. △은 양의 완성 — 5. M은 땅에서 출발해 하늘로 올라갔다 다시 내려오며 6·7·8·9를 담습니다. ○은 음의 완성 — 0. 획 수가 그대로 숫자의 값입니다.
           </motion.p>
+
+          {/* 각론 — 1~10 개별 글리프 */}
+          <motion.div
+            variants={fadeUp}
+            className="mt-16 md:mt-24"
+          >
+            <h3 className="text-2xl md:text-3xl font-bold text-center">
+              각론 — 0부터 9까지, 한 자씩
+            </h3>
+            <p className="text-base md:text-lg text-foreground/80 text-center max-w-2xl mx-auto mt-3 md:mt-4">
+              획을 하나씩 더할 때마다 값이 1씩 올라갑니다. 한 글자, 한 획,
+              한 숫자.
+            </p>
+
+            <div className="mt-8 md:mt-12 grid grid-cols-1 gap-6 md:gap-8">
+              {/* 양 행 — 1·2·3·4·5 */}
+              <div className="p-4 md:p-6 rounded-2xl bg-background border border-foreground/10">
+                <p className="text-sm md:text-base font-bold text-yang text-center mb-3 md:mb-4">
+                  양 — W 누적 + △
+                </p>
+                <div className="grid grid-cols-5 gap-2 md:gap-4 max-w-2xl mx-auto">
+                  {YANG_DIGITS.map((d) => (
+                    <div
+                      key={d}
+                      className="aspect-[11/13] w-full max-w-[110px] mx-auto"
+                    >
+                      <DigitGlyph value={d} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* 음 행 — 6·7·8·9·0 */}
+              <div className="p-4 md:p-6 rounded-2xl bg-background border border-foreground/10">
+                <p className="text-sm md:text-base font-bold text-eum text-center mb-3 md:mb-4">
+                  음 — M 누적 + ○
+                </p>
+                <div className="grid grid-cols-5 gap-2 md:gap-4 max-w-2xl mx-auto">
+                  {EUM_DIGITS.map((d) => (
+                    <div
+                      key={d}
+                      className="aspect-[11/13] w-full max-w-[110px] mx-auto"
+                    >
+                      <DigitGlyph value={d} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <p className="text-sm md:text-base text-foreground/70 text-center max-w-3xl mx-auto leading-relaxed mt-8 md:mt-10 italic">
+              1획 = 1, 2획 = 2, … 4획이 모이면 W(=4) 또는 M(=9). 그 다음 완성
+              부호 △(5) · ○(0)으로 양·음이 닫힙니다.
+            </p>
+          </motion.div>
         </motion.div>
       </Container>
     </section>

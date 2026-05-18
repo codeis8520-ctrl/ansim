@@ -90,6 +90,20 @@ export default function PostureMorphGiyeok({
         animate={{ x1: 116, y1: 15, x2: 86, y2: 15, stroke: YANG }}
         transition={transition}
       />
+
+      {/* 양모음 ㅣ 라벨 — 차렷한 몸이 줄기(양모음 ㅣ)임을 명시 */}
+      <text
+        x={100}
+        y={196}
+        textAnchor="middle"
+        fontSize={10}
+        fontWeight={600}
+        fill={YANG}
+        stroke="none"
+        opacity={0.75}
+      >
+        양모음 ㅣ
+      </text>
     </motion.svg>
   );
 }
