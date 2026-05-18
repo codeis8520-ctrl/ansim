@@ -68,10 +68,8 @@ export default function ConsonantSongSection() {
               </p>
             </div>
 
-            <div className="overflow-x-auto">
-              <div className="min-w-[640px] md:min-w-0">
-                <ConsonantSongSheet />
-              </div>
+            <div className="w-full">
+              <ConsonantSongSheet />
             </div>
           </motion.div>
 
