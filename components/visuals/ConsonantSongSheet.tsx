@@ -62,12 +62,11 @@ interface Stave {
   events: Event[];
 }
 
-// 음높이 — 사용자 솔페지 메모 그대로 4단×10음 매핑 (도=C4 기준, F장조 1♭, 시는 시♭).
-// 사용자가 알려준 솔페지 흐름을 단별로 정확히 잘라 사용:
+// 음높이 — 사용자 음절 매핑 그대로 (F장조 1♭, 도=C4 기준).
 //   1단: 도 레 도 / 레 파 솔 / 파 솔 라 솔
-//   2단: 라 파 레 / 도(h) 레 도 / 파 솔 파 솔
-//   3단: 라 솔 파 / 레 도 레 / 파 솔 파 파
-//   4단: 도 도 도 / 라(h) 도 라 / 솔 라 파 레
+//   2단: 파 레 도 / 레(h) 도 레 / 파 솔 파 파
+//   3단(1단과 같은 가락): 도 레 도 / 레 파 솔 / 파 솔 라 솔
+//   4단(2단과 같은 가락): 파 레 도 / 레(h) 도 레 / 파 솔 파 파
 const STAVES: Stave[] = [
   {
     label: "1단",
@@ -89,52 +88,52 @@ const STAVES: Stave[] = [
   {
     label: "2단",
     events: [
-      { kind: "note", pitch: "A4", dur: "q", lyric: "아" },
-      { kind: "note", pitch: "F4", dur: "q", lyric: "리" },
-      { kind: "note", pitch: "D4", dur: "q", lyric: "랑" },
+      { kind: "note", pitch: "F4", dur: "q", lyric: "아" },
+      { kind: "note", pitch: "D4", dur: "q", lyric: "리" },
+      { kind: "note", pitch: "C4", dur: "q", lyric: "랑" },
       { kind: "rest", dur: "q" },
-      { kind: "note", pitch: "C4", dur: "h", lyric: "고—" },
-      { kind: "note", pitch: "D4", dur: "e", lyric: "개", beamWithNext: true },
-      { kind: "note", pitch: "C4", dur: "e", lyric: "를" },
+      { kind: "note", pitch: "D4", dur: "h", lyric: "고—" },
+      { kind: "note", pitch: "C4", dur: "e", lyric: "개", beamWithNext: true },
+      { kind: "note", pitch: "D4", dur: "e", lyric: "를" },
       { kind: "rest", dur: "q" },
       { kind: "note", pitch: "F4", dur: "q", lyric: "넘" },
       { kind: "note", pitch: "G4", dur: "q", lyric: "어" },
       { kind: "note", pitch: "F4", dur: "q", lyric: "간" },
-      { kind: "note", pitch: "G4", dur: "q", lyric: "다" },
+      { kind: "note", pitch: "F4", dur: "q", lyric: "다" },
     ],
   },
   {
     label: "3단",
     events: [
-      { kind: "note", pitch: "A4", dur: "q", lyric: "가" },
-      { kind: "note", pitch: "G4", dur: "q", lyric: "카" },
-      { kind: "note", pitch: "F4", dur: "q", lyric: "라" },
+      { kind: "note", pitch: "C4", dur: "q", lyric: "가" },
+      { kind: "note", pitch: "D4", dur: "q", lyric: "카" },
+      { kind: "note", pitch: "C4", dur: "q", lyric: "라" },
       { kind: "rest", dur: "q" },
       { kind: "note", pitch: "D4", dur: "q", lyric: "나" },
-      { kind: "note", pitch: "C4", dur: "q", lyric: "다" },
-      { kind: "note", pitch: "D4", dur: "q", lyric: "타" },
+      { kind: "note", pitch: "F4", dur: "q", lyric: "다" },
+      { kind: "note", pitch: "G4", dur: "q", lyric: "타" },
       { kind: "rest", dur: "q" },
       { kind: "note", pitch: "F4", dur: "q", lyric: "마" },
       { kind: "note", pitch: "G4", dur: "q", lyric: "바" },
-      { kind: "note", pitch: "F4", dur: "q", lyric: "파" },
-      { kind: "note", pitch: "F4", dur: "q", lyric: "모" },
+      { kind: "note", pitch: "A4", dur: "q", lyric: "파" },
+      { kind: "note", pitch: "G4", dur: "q", lyric: "모" },
     ],
   },
   {
     label: "4단",
     events: [
-      { kind: "note", pitch: "C4", dur: "q", lyric: "사" },
-      { kind: "note", pitch: "C4", dur: "q", lyric: "자" },
+      { kind: "note", pitch: "F4", dur: "q", lyric: "사" },
+      { kind: "note", pitch: "D4", dur: "q", lyric: "자" },
       { kind: "note", pitch: "C4", dur: "q", lyric: "차" },
       { kind: "rest", dur: "q" },
-      { kind: "note", pitch: "A4", dur: "h", lyric: "아—" },
+      { kind: "note", pitch: "D4", dur: "h", lyric: "아—" },
       { kind: "note", pitch: "C4", dur: "e", lyric: "하", beamWithNext: true },
-      { kind: "note", pitch: "A4", dur: "e", lyric: "로" },
+      { kind: "note", pitch: "D4", dur: "e", lyric: "로" },
       { kind: "rest", dur: "q" },
-      { kind: "note", pitch: "G4", dur: "q", lyric: "넘" },
-      { kind: "note", pitch: "A4", dur: "q", lyric: "어" },
+      { kind: "note", pitch: "F4", dur: "q", lyric: "넘" },
+      { kind: "note", pitch: "G4", dur: "q", lyric: "어" },
       { kind: "note", pitch: "F4", dur: "q", lyric: "간" },
-      { kind: "note", pitch: "D4", dur: "q", lyric: "다" },
+      { kind: "note", pitch: "F4", dur: "q", lyric: "다" },
     ],
   },
 ];
