@@ -13,15 +13,21 @@ export interface AnnotatedBodyDiagramProps {
  * AnnotatedBodyDiagram — BigIdea 섹션 도식.
  *
  * Hero의 BodyDiagram과 별개의 풍부 도식. viewBox 400×600.
- * 부위 7개 (머리/코/입/인중/몸통/거수팔/다리)에 한글 자모 라벨이 붙고,
+ * 메인 인물 7부위 (머리/코/입/인중/몸통/거수팔/다리)에 한글 자모 라벨이 붙고,
+ * 좌측 하단에는 앉은 자세의 cameo 인물(ㄴ)이 추가되어
+ * 5초자음(ㄱㄴㅁㅅㅇ)이 한 도식에 모두 표현된다.
  * 각 부위는 호버 시 살짝 확대되며 라벨 색이 양/음/중성으로 변한다.
  *
  * 양 (#E85D3C): ㅣ(코), ㄱ(팔), ㅅ(다리) — 기립/양적 자세
- * 음 (#2C3E62): ㅡ(입), ㅁ(몸통), ㅇ(머리) — 닫힘/음적 정적
+ * 음 (#2C3E62): ㅡ(입), ㅁ(몸통), ㅇ(머리), ㄴ(앉음) — 닫힘/음적 정적
  * 중성: • (인중) — 천지인의 인, 색 변화 없음
  *
  * ㅅ-legs geometry: apex (200, 324) → (140, 540) and (260, 540).
  * 다리 한 쪽이 수직으로부터 atan(60/216) ≈ 15.5° 벌어진다.
+ *
+ * ㄴ cameo: 좌측 하단(중심 x≈55, y≈515)에 작은 앉은 인물 — 수직 상체 +
+ * 수평 다리가 ㄴ 자형을 이룬다. 메인 인물의 ㅅ 다리(좌측 끝 x=140)와
+ * 시각적으로 겹치지 않도록 x=20–110 영역에 배치.
  *
  * 인터랙티브 강화:
  * - 부위→라벨 연결선(dashed) — 평소 흐리게, 호버/투어 시 진하게+색
@@ -65,6 +71,7 @@ const PART_KEYS = [
   "torso",
   "arm",
   "legs",
+  "nieun",
 ] as const;
 type PartKey = (typeof PART_KEYS)[number];
 
@@ -72,7 +79,7 @@ export default function AnnotatedBodyDiagram({
   className,
 }: AnnotatedBodyDiagramProps) {
   const label =
-    "사람 몸의 각 부분에 대응하는 한글 자모음 — 코는 ㅣ, 입은 ㅡ, 인중은 점, 머리는 ㅇ, 몸통은 ㅁ, 두 다리는 ㅅ, 거수한 팔은 ㄱ";
+    "사람 몸의 각 부분에 대응하는 한글 자모음 — 코는 ㅣ, 입은 ㅡ, 인중은 점, 머리는 ㅇ, 몸통은 ㅁ, 두 다리는 ㅅ, 거수한 팔은 ㄱ, 좌측 하단 앉은 자세는 ㄴ";
 
   const [tourPart, setTourPart] = useState<PartKey | null>(null);
 
@@ -481,6 +488,77 @@ export default function AnnotatedBodyDiagram({
           style={{ transformOrigin: "200px 582px", transformBox: "fill-box" }}
         >
           ㅅ
+        </motion.text>
+      </motion.g>
+
+      {/* ----- ㄴ cameo (ㄴ, 음) — 좌측 하단 앉은 보조 인물 -----
+          수직 상체 + 수평 다리 = ㄴ 자형. 메인 인물의 좌측 ㅅ 다리(x=140)와
+          간섭 없도록 x≈20–110 영역에 배치. */}
+      <motion.g
+        initial="rest"
+        whileHover="hover"
+        whileTap="hover"
+        animate={animateFor("nieun")}
+      >
+        <rect
+          x={16}
+          y={460}
+          width={114}
+          height={130}
+          fill="transparent"
+          stroke="none"
+          pointerEvents="all"
+          className="cursor-pointer"
+        />
+        {/* connector: 앉은 인물 → ㄴ 라벨 */}
+        <motion.line
+          x1={55}
+          y1={552}
+          x2={55}
+          y2={566}
+          strokeDasharray="3 3"
+          variants={connectorVariants(EUM)}
+        />
+        {/* 머리 */}
+        <motion.circle
+          cx={55}
+          cy={488}
+          r={9}
+          variants={partVariants}
+          style={{ transformOrigin: "55px 488px", transformBox: "fill-box" }}
+        />
+        {/* 상체 — ㄴ 수직획 */}
+        <motion.line
+          x1={55}
+          y1={497}
+          x2={55}
+          y2={540}
+          strokeWidth={4}
+          variants={partVariants}
+          style={{ transformOrigin: "55px 518px", transformBox: "fill-box" }}
+        />
+        {/* 앉은 다리 — ㄴ 수평획 */}
+        <motion.line
+          x1={55}
+          y1={540}
+          x2={102}
+          y2={540}
+          strokeWidth={4}
+          variants={partVariants}
+          style={{ transformOrigin: "78px 540px", transformBox: "fill-box" }}
+        />
+        <motion.text
+          x={55}
+          y={582}
+          textAnchor="middle"
+          stroke="none"
+          fontFamily='"Pretendard Variable", Pretendard, sans-serif'
+          fontWeight={700}
+          fontSize={28}
+          variants={labelVariants(EUM)}
+          style={{ transformOrigin: "55px 582px", transformBox: "fill-box" }}
+        >
+          ㄴ
         </motion.text>
       </motion.g>
     </svg>
